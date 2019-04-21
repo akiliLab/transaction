@@ -5,10 +5,10 @@ import (
 	"log"
 	"net"
 
-	balance "github.com/MAKOSCAFEE/malengo-pay/balance/pb"
 	"github.com/MAKOSCAFEE/malengo-pay/db"
+	balance "github.com/ubunifupay/balance/pb"
 
-	pb "github.com/MAKOSCAFEE/malengo-pay/transaction/pb"
+	pb "github.com/ubunifupay/transaction/pb"
 
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
