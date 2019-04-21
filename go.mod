@@ -3,9 +3,11 @@ module github.com/ubunifupay/transaction
 go 1.12
 
 require (
+	github.com/MAKOSCAFEE/malengo-pay v0.0.0-20190421104451-a23831b15d53
 	github.com/golang/protobuf v1.3.1
 	github.com/ubunifupay/balance v0.0.0-20190421135647-20784d982d9f
 	golang.org/x/net v0.0.0-20190420063019-afa5a82059c6
+	google.golang.org/appengine v1.4.0 // indirect
 	google.golang.org/grpc v1.20.1
 )
 
