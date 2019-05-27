@@ -3,11 +3,11 @@ module github.com/akililab/transaction
 go 1.12
 
 require (
+	github.com/armon/circbuf v0.0.0-20190214190532-5111143e8da2 // indirect
 	github.com/golang/protobuf v1.3.1
-	github.com/ubunifupay/balance v0.0.0-20190421135647-20784d982d9f
-	github.com/ubunifupay/db v0.0.0-20190421141246-a67afe691ec9
-	golang.org/x/net v0.0.0-20190420063019-afa5a82059c6
-	google.golang.org/genproto v0.0.0-20190418145605-e7d98fc518a7 // indirect
+	github.com/mattn/go-colorable v0.1.1 // indirect
+	github.com/micro/go-micro v1.2.0
+	github.com/onsi/gomega v1.5.0 // indirect
 	google.golang.org/grpc v1.20.1
 )
 
