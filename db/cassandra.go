@@ -15,7 +15,7 @@ import (
 var CassandraSession *gocql.Session
 
 // GetTransactionDB : Fetch from database and return values
-func GetTransactionDB(req *pb.TransactionRequest) (*pb.TransactionReply,error) {
+func GetTransactionDB(req *pb.TransactionRequest) ([]*pb.TransactionInformation, error) {
 
 	// Create a query which uses the built query and populates it with the
 	// values in the new item
@@ -25,14 +25,12 @@ func GetTransactionDB(req *pb.TransactionRequest) (*pb.TransactionReply,error) {
         "account_id": req.AccountId,
 	})
 
-	var res  *pb.TransactionReply
-
 	var rasp []*pb.TransactionInformation
 
 	// Run that query and release it when done
 	err := query.SelectRelease(&rasp)
 
-	return res, err
+	return rasp, err
 }
 
 
