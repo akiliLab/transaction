@@ -5,6 +5,7 @@ import (
 	"log"
 	"time"
 
+	db "github.com/akililab/transaction/db"
 	transaction "github.com/akililab/transaction/proto"
 	"github.com/micro/go-micro"
 )
@@ -15,7 +16,10 @@ type Transaction struct{}
 // GetTransactions : Return All transactions per given account_id
 func (t *Transaction) GetTransactions(ctx context.Context, req *transaction.TransactionRequest, rsp *transaction.TransactionReply) error {
 	log.Print("Received GetTransaction request")
-	return nil
+
+	rsp, err := db.GetTransactionDB(req)
+
+	return err
 }
 
 func main() {
