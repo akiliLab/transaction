@@ -1,4 +1,4 @@
-module github.com/ubunifupay/transaction
+module github.com/akililab/transaction
 
 go 1.12
 

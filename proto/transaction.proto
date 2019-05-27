@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package transaction;
+
+import "google/protobuf/timestamp.proto";
+
+service Transaction {
+  rpc GetTransactions(TransactionRequest) returns (TransactionReply) {}
+}
+
+message TransactionRequest { string account_id = 1; }
+
+message TransactionReply { repeated TransactionInformation transactions = 1; }
+
+message TransactionInformation {
+  int64 id = 1;
+  string account_id = 2;
+  google.protobuf.Timestamp created = 3;
+  string description = 4;
+  int64 amount = 5;
+  string currency = 6;
+  string merchant = 7;
+  string notes = 8;
+  google.protobuf.Timestamp settled = 9;
+  string user_id = 10;
+  bool is_load = 11;
+  google.protobuf.Timestamp updated = 12;
+  float local_amount = 13;
+  string local_currency = 14;
+}
