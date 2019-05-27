@@ -21,7 +21,7 @@ func (t *Transaction) GetTransactions(ctx context.Context, req *transaction.Tran
 func main() {
 	// Setup dial with balance service
 	service := micro.NewService(
-		micro.Name("akililab.transaction"),
+		micro.Name("micro.akililab.transaction"),
 		micro.RegisterTTL(time.Second*30),
 		micro.RegisterInterval(time.Second*10),
 	)
