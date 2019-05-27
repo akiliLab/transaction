@@ -19,13 +19,18 @@ func GetTransactionDB(req *pb.TransactionRequest) (*pb.TransactionReply,error) {
 
 	// Create a query which uses the built query and populates it with the
 	// values in the new item
-	stmt, names := qb.Select("akililab.transactions").Where(qb.Eq("account_id")).ToCql()
+	stmt, names := qb.Select("akililab.transactions").Where(qb.Eq("account_id")).AllowFiltering().ToCql()
+
 	query := gocqlx.Query(CassandraSession.Query(stmt), names).BindMap(qb.M{
         "account_id": req.AccountId,
 	})
+
 	var res  *pb.TransactionReply
+
+	var rasp []*pb.TransactionInformation
+
 	// Run that query and release it when done
-	err := query.GetRelease(&res)
+	err := query.SelectRelease(&rasp)
 
 	return res, err
 }
@@ -41,13 +46,12 @@ func init() {
 
 	cluster := gocql.NewCluster("127.0.0.1")
 	cluster.Keyspace = "system"
-	CassandraSession, err := cluster.CreateSession()
+	var err error
+
+	CassandraSession, err = cluster.CreateSession()
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	fmt.Println("Here is called")
-
-	// Close session when done initializing it
-	defer CassandraSession.Close()
 }
