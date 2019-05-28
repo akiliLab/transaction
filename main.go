@@ -15,11 +15,10 @@ type Transaction struct{}
 
 // GetTransactions : Return All transactions per given account_id
 func (t *Transaction) GetTransactions(ctx context.Context, req *transaction.TransactionRequest, rsp *transaction.TransactionReply) error {
-	log.Print("Received GetTransaction request")
 
-	dfa, err := db.GetTransactionDB(req)
+	transactions, err := db.GetTransactionDB(req)
 
-	rsp.Transactions = dfa
+	rsp.Transactions = transactions
 
 	return err
 }

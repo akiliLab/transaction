@@ -9,7 +9,6 @@ import (
 	"github.com/gocql/gocql"
 	"github.com/scylladb/gocqlx"
 	"github.com/scylladb/gocqlx/qb"
-	"fmt"
 )
 // CassandraSession exported
 var CassandraSession *gocql.Session
@@ -25,12 +24,12 @@ func GetTransactionDB(req *pb.TransactionRequest) ([]*pb.TransactionInformation,
         "account_id": req.AccountId,
 	})
 
-	var rasp []*pb.TransactionInformation
+	var transactions []*pb.TransactionInformation
 
 	// Run that query and release it when done
-	err := query.SelectRelease(&rasp)
+	err := query.SelectRelease(&transactions)
 
-	return rasp, err
+	return transactions, err
 }
 
 
@@ -50,6 +49,4 @@ func init() {
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	fmt.Println("Here is called")
 }
